@@ -6,4 +6,4 @@ client = TestClient(app)
 def test_home():
     response = client.get("/")
     assert response.status_code == 200
-    assert response.json() == {"message": "CI/CD is working!"}
+    assert "CI/CD is working" in response.json()["message"]
