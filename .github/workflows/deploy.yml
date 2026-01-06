@@ -1,0 +1,20 @@
+name: Kid Friendly CI/CD
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  pipeline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run tests (CI step)
+        run: pytest -q
+
+      - name: Deploy to Render (CD step)
+        run: curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK }}"
