@@ -3,4 +3,4 @@ app = FastAPI()
 
 @app.get("/")
 def home():
-    return {"message": "CI/CD is working perfectly!"}
+    return {"message": "Learning branching!"}
